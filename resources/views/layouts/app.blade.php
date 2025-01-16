@@ -16,11 +16,11 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body class=" h-100">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-warning shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand fs-2" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -29,9 +29,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    @auth
+                        <ul class="navbar-nav me-auto">
+                            <a href="{{ url("articles/add")}}" class=" text-decoration-none text-success fs-3"> + New Bike</a>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -72,9 +74,13 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-opacity-25 bg-secondary">
             @yield('content')
         </main>
+
+        {{-- <footer class=" bg-warning">
+            <h2 class=" text-white p-3  text-center" >Thank you for visit my page.I will try my best!</h2>
+        </footer> --}}
     </div>
 </body>
 </html>

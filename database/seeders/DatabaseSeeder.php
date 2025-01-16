@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -28,6 +29,8 @@ class DatabaseSeeder extends Seeder
         foreach ($list as $type) {
             Category::create(["name" => $type]);
         }
+
+        Comment::factory()->count(30)->create();
 
 
         User::factory()->create([
